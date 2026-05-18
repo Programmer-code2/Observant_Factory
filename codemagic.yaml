@@ -1,0 +1,37 @@
+workflows:
+  ios-release:
+    name: iOS Release to TestFlight
+    instance_type: mac_mini_m2
+    environment:
+      vars:
+        APP_STORE_CONNECT_ISSUER_ID: Encrypted(App Store Connect Issuer ID)
+        APP_STORE_CONNECT_KEY_ID: Encrypted(Key ID)
+        APP_STORE_CONNECT_PRIVATE_KEY: Encrypted(Private Key)
+        CERTIFICATE_PRIVATE_KEY: Encrypted(Private key for code signing)
+      flutter: stable
+    cache:
+      cache_paths:
+        - ~/.pub-cache
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: main
+          include: true
+          source: true
+    scripts:
+      - name: Get Flutter packages
+        script: flutter pub get
+      - name: Build iOS Release Archive
+        script: flutter build ipa --release --no-codesign
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+      - build/ios/archive/Runner.xcarchive/**/*.dSYM.zip
+    publishing:
+      app_store_connect:
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
+        key_id: $APP_STORE_CONNECT_KEY_ID
+        private_key: $APP_STORE_CONNECT_PRIVATE_KEY
+        submit_to_testflight: true
+        submit_to_app_store: false

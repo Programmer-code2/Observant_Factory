@@ -121,6 +121,7 @@ lib/
 - **Display Name:** بilingual "جولات تفتيشية | Observations"
 - **Release Build:** Optimized (`-O` swift, `wholemodule`, `dwarf-with-dsym`, `ENABLE_NS_ASSERTIONS=NO`)
 - **To Submit:** `flutter build ios --release` on macOS → Archive in Xcode → Upload via Xcode Organizer or Transporter
+- **CI/CD:** Codemagic (codemagic.yaml) — auto-build to TestFlight on push to main
 
 ## [COMPLETED]
 
