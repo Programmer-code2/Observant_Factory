@@ -4,10 +4,11 @@ workflows:
     instance_type: mac_mini_m2
     environment:
       vars:
-         APP_STORE_CONNECT_ISSUER_ID: Encrypted(App Store Connect Issuer ID)
-         APP_STORE_CONNECT_KEY_ID: FLUZH9BJ24
-         APP_STORE_CONNECT_PRIVATE_KEY: Encrypted(Private Key)
-         CERTIFICATE_PRIVATE_KEY: Encrypted(Private key for code signing)
+      vars:
+   APP_STORE_CONNECT_ISSUER_ID: $APP_STORE_CONNECT_ISSUER_ID
+  APP_STORE_CONNECT_KEY_ID: FLUZH9BJ24
+  APP_STORE_CONNECT_PRIVATE_KEY: $APP_STORE_CONNECT_PRIVATE_KEY
+      
       flutter: stable
     cache:
       cache_paths:
