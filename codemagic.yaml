@@ -4,12 +4,19 @@ workflows:
     instance_type: mac_mini_m2
     environment:
       vars:
+   workflows:
+  ios-release:
+    name: iOS Release to TestFlight
+    instance_type: mac_mini_m2
+
+    environment:
       vars:
-   APP_STORE_CONNECT_ISSUER_ID: $c5b3eb31-c192-4df2-95c0-480d77a8b75e
-  APP_STORE_CONNECT_KEY_ID: FLUZH9BJ24
-  APP_STORE_CONNECT_PRIVATE_KEY: $APP_STORE_CONNECT_PRIVATE_KEY
-      
+        APP_STORE_CONNECT_ISSUER_ID: c5b3eb31-c192-4df2-95c0-480d77a8b75e
+        APP_STORE_CONNECT_KEY_ID: FLUZH9BJ24
+        APP_STORE_CONNECT_PRIVATE_KEY: "$APP_STORE_CONNECT_PRIVATE_KEY"
+
       flutter: stable
+
     cache:
       cache_paths:
         - ~/.pub-cache
