@@ -1,4 +1,4 @@
-orkflows:
+workflows:
   ios-release:
     name: iOS Release to TestFlight
     instance_type: mac_mini_m2
